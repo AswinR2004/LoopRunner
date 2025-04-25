@@ -2,7 +2,7 @@ name: Run Loop Runner
 
 on:
   schedule:
-    - cron: "30 20 * * *"
+    - cron: "3 0 * * *"
   workflow_dispatch:
 
 jobs:
