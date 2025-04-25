@@ -1,0 +1,28 @@
+name: Run Loop Runner
+
+on:
+  schedule:
+    - cron: "25 20 * * *"
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run loopRunner
+        run: node loopRunner.js
+        env:
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+          USER_NETWORK_ID: ${{ secrets.USER_NETWORK_ID }}
