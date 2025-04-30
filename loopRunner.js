@@ -52,4 +52,7 @@ async function runLoops() {
   }
 }
 
-runLoops();
+export default async function handler(req, res) {
+  await runLoops()
+  res.status(200).send("LoopRunner completed.")
+}
